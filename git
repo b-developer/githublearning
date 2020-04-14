@@ -1,0 +1,130 @@
+GIT
+************************ COMMANDS **************************************
+
+=> mkdir [ to creating the folder ]
+=> git version  [ used to check gti version ]
+
+******* First time to start with git we need to provide credentials ****
+
+=> git config --global user.name "vinaymachinetest"
+=> git config --global user.email "developer.vinay.28@gmail.com"
+=> git config --global --list [ it will give the user details ]
+
+*********************************************************************
+=> ls  [ showing file list ]
+=> eccho "creating a file" >> start.txt [ used to creat a file ]
+=> cat filename [ use to see the content of the file ]
+
+*********************************************************************
+=> git clone  "git repo url" [ for cloning the remote repository ]
+=> git status [ showing status working branch ]
+=> git add start.txt [ used to stage the file ]
+=> git restore --staged start.txt  [ for unstaging ]
+=> git commit -m "first commit adding text file" [ commiting the changes ] 
+                          OR
+     git commit -am "commit message" [ stagging as well as for commiting the changes simultaneously ]
+     
+=> git push origin master [ push the commit changes to remote repository]
+
+*************** CREATING FIRST PROJECT ********************************
+
+=> git init project_name [ initializing the git ]
+=> ls -al [ showing all the files inside the folder ]
+=> git pull	origin master [ to pull the latest changes for remote repo ]
+=> git commit -am "commit message" [ stagging as well as for commiting the changes]
+=> git ls-files  [ used for tracking ]
+=> mkdir -p folder1/folder2/folder3  [ creating folder inside ]
+=> git add .  [ add all files icluding in different project locations ]
+=> git checkout -- file name  [ used to delete the current change and it comes to last commit changes ]
+=> git mv filename1 filename2 [ renaming the file at git level ]
+=> mv filename1 filename2 [ at OS level but after that we have to use this command for staging
+   git add -A then commit
+   
+=> git mv filename1 /forlder3  [ moving file from one location to another ]
+=> git add -u  [ if u manually did the rename ]
+=> rm filename [ deleiting the file it will not track by the git ]
+=> git rm filenam  [ track by the git ]
+=> git help log
+=> git log --oneline --decorate 
+ 
+***************** GIT COMPARISION *****************************************
+
+=> git diff or using tool(difftool need to install)(comparision between working directroy and staging area)
+   e.g git difftool   
+   
+=> git diff HEAD (comparision between working directroy and last commit or in repository)
+   e.g git difftool HEAD
+
+=> git diff --staged HEAD (comparisionrsion between statging area and last commit in repository
+   e.g git difftool --stagged HEAD
+
+=> git diff -- filename(comparison between to specific file)
+   e.g git difftool -- filename
+
+=> git diff ae6f872(commit id ) HEAD (comparison between commits)
+   e.g git difftool ae6f872(commit id ) HEAD
+
+=> git diff HEAD HEAD^ (comparison between last commit and prior to last commit)
+   e.g git difftool HEAD HEAD^
+
+=> git diff ae6f872(commit id 1 ) ae6f873(commit id 2) (comparison between two commits) 
+    e.g git difftool ae6f872(commit id 1 ) ae6f873(commit id 2)
+    
+=> git diff master origin/master (comparison between local and remote master branch)
+    e.g git difftool master origin/master
+    
+=> git diff master branhname  (comparison between two different branches)
+  
+************************ BRANCHING *******************************************
+
+=> git branch -a (display the branches)
+=> git branch branchname( used to create new branch)
+=> git checkout branchname (used to switch between the branches)
+=> git branch -m branchname newbranchname( used to renaming the brach)
+=> git branch -d branchname (used to delete the brach)
+=> git checkout -b branchname (creating and swithching the branch)
+=> git merge newbranch (merging to current changes to master)
+=> git merge newbranch  --no-ff (turn off the fastforward)
+=> git mergetool(need to install merging tool to resolve the conflicts) 
+
+******************** REBASING ****************************************
+
+=> git rebase master
+=> git rebase --abort
+=> git rebase --continue
+=> git fetch origin master
+=> git pull --rebase origin master
+
+******************* STASHING *****************************************
+
+=> git stash 
+=> git stash apply
+=> git stash list
+=> git stash drop
+=> git stash -u
+=> git stash pop
+=> git stash save "message"
+=> git stash show stash@{1}
+=> git stash apply stash@{1}
+=> git stash drop stash@{1}
+=> git stash clear
+=> git stash branch newbranch
+
+******************** TAGGING ******************************************
+
+=> git tag tagname
+=> git tag --list
+=> git tag --delete tagname
+=> git tag -a v-1.0(for anotated tag)
+=> git show v-1.0
+=> git commit --amend (use to amend the commit mesaage)
+=> git tag v-1.2 -m "Release 1.2"
+=> git dif v-1.0 v-1.2
+    git difftool v-1.0 v-1.2
+=> git tag -a v-1.0-beta 96efr1(commit id)
+=> git tag -a v-1.0-beta -f commitid   (for updation of tag)
+=> git push origin v-1.0
+=> git push origin master --tags
+=> git push origin : v-09-beta (for deletion in remote location)
+============================
+-> git reset HEAD^1
